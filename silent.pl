@@ -177,6 +177,7 @@ Switches:
 Author:
 
   paul.d.fox\@gmail.com
+  https://github.com/dtrace4linux/silent
 
 EOF
 
