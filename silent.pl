@@ -174,6 +174,10 @@ Example:
 
 Switches:
 
+Author:
+
+  paul.d.fox\@gmail.com
+
 EOF
 
 	exit(defined($ret) ? $ret : 1);
