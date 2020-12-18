@@ -50,7 +50,7 @@ sub do_stop_apps
 			$stop_apps{$app}->{hidden} == $stop_apps{$app}->{num} ? "hidden" : "open",
 			join(" ", sort(keys(%{$stop_apps{$app}->{pids}}))),
 			);
-		if (time() > $last_t + 60 ||
+		if (time() > $last_t + 180 ||
 		    $s ne ($stop_apps{$app}->{line} || '')) {
 			print time_string() . $s;
 			$stop_apps{$app}->{line} = $s;
@@ -75,6 +75,10 @@ sub get_xwin_id
 
 		my $id = (split(" ", $ln))[0];
 		$stop_apps{$name}->{xids}{$id} = 1;
+		if ($id !~ /^0x[0-9a-f]/) {
+			#print "bogus id ($id): $ln\n";
+			next;
+		}
 #print "try $name $id\n";
 		my $state = `xprop -id $id | grep _NET_WM_STATE`;
 		chomp($state);
